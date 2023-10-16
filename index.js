@@ -17,7 +17,7 @@ bot.on("message", msg => {
 app.post("/incoming-messages", (req, res) => {
   const { message } = req.body;
 
-  bot.sendMessage(1970725563, message);
+  bot.sendMessage(1999876670, message);
 
   res.status(200).send("Message sent");
 });
