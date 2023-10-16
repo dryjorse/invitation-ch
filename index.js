@@ -1,18 +1,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const TelegramApi = require("node-telegram-bot-api");
+const cors = require("cors");
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 const token = "6465466584:AAHfD_FMWo9E-mVEoqs9VZm8j8dQQiZ9p98";
 const bot = new TelegramApi(token, { polling: true });
 const webhookURL = "https://invitation-ch.onrender.com/telegram-webhook";
 bot.setWebHook(webhookURL);
 
-bot.on("message", msg => {
-  console.log(msg)
-})
+bot.on("message", (msg) => {
+  console.log(msg);
+});
 
 app.post("/incoming-messages", (req, res) => {
   const { message } = req.body;
