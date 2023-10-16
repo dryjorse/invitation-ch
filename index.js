@@ -7,6 +7,8 @@ app.use(bodyParser.json());
 
 const token = "6465466584:AAHfD_FMWo9E-mVEoqs9VZm8j8dQQiZ9p98";
 const bot = new TelegramApi(token, { polling: true });
+const webhookURL = "https://invitation-ch.onrender.com";
+bot.setWebHook(webhookURL);
 
 app.post("/incoming-messages", (req, res) => {
   const { message } = req.body;
