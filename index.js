@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 const token = "6465466584:AAHfD_FMWo9E-mVEoqs9VZm8j8dQQiZ9p98";
 const bot = new TelegramApi(token, { polling: true });
-const webhookURL = "https://invitation-ch.onrender.com";
+const webhookURL = "https://invitation-ch.onrender.com/telegram-webhook";
 bot.setWebHook(webhookURL);
 
 app.post("/incoming-messages", (req, res) => {
@@ -16,6 +16,12 @@ app.post("/incoming-messages", (req, res) => {
   bot.sendMessage(1970725563, message);
 
   res.status(200).send("Message sent");
+});
+
+app.post("/telegram-webhook", (req, res) => {
+  const update = req.body;
+
+  res.sendStatus(200);
 });
 
 app.listen(3001, () => {
