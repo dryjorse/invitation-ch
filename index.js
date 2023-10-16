@@ -10,6 +10,10 @@ const bot = new TelegramApi(token, { polling: true });
 const webhookURL = "https://invitation-ch.onrender.com/telegram-webhook";
 bot.setWebHook(webhookURL);
 
+bot.on("message", msg => {
+  console.log(msg)
+})
+
 app.post("/incoming-messages", (req, res) => {
   const { message } = req.body;
 
